@@ -30,7 +30,11 @@
   "dependencies": {
     "kaboom": "^0.5.1"
   },
+  "alias": {
+    "kaboom": "./node_modules/kaboom/dist/kaboom.mjs"
+  },
   "devDependencies": {
-    "parcel": "^2.0.0-beta.2"
+    "parcel": "^2.0.0-beta.2",
+    "typescript": "^4.3.5"
   }
 }
