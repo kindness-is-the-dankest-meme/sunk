@@ -1,3 +1,11 @@
-import k from "kaboom";
+import kaboom from "kaboom";
 
-console.log(k);
+const canvas = document.querySelector("canvas");
+if (!canvas) {
+  throw new Error("No canvas found!");
+}
+
+const k = kaboom({
+  canvas,
+  fullscreen: true,
+});
