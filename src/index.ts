@@ -10,6 +10,21 @@ const k = kaboom({
   fullscreen: true,
 });
 
+const { atan2, PI: π, floor, min, max } = Math;
+const ππ = π * 2;
+
+const clamp = (x: number, lower: number, upper: number) =>
+  min(max(lower, x), upper);
+
+const repeat = (t: number, m: number) => clamp(t - floor(t / m) * m, 0, m);
+
+const lerp = (v0: number, v1: number, t: number) => v0 * (1 - t) + v1 * t;
+
+const lerpAngle = (a: number, b: number, t: number) => {
+  const dt = repeat(b - a, ππ);
+  return lerp(a, a + (dt > π ? dt - ππ : dt), t);
+};
+
 k.scene("level-1", () => {
   const [r, g, b] = [205, 133, 63].map((c) => c / 255);
   if (!(r && g && b)) {
@@ -28,14 +43,10 @@ k.scene("level-1", () => {
     const diff = k.mousePos().sub(boat.pos);
     const dist = diff.len();
 
-    boat.move(diff.scale(Math.min(dist, 200 / dist)));
+    boat.move(diff.scale(min(dist, 200 / dist)));
 
-    const targetTurn = -Math.atan2(diff.y, diff.x) - boat.angle;
-    // const absTurn = Math.abs(targetTurn);
-    // const maxTurn = Math.PI / 100;
-    // const sign = absTurn === 0 ? 1 : targetTurn / absTurn;
-    boat.angle += targetTurn; // sign * Math.min(absTurn, maxTurn);
-    console.log((boat.angle * (180 / Math.PI)).toFixed(2));
+    const targetAngle = -atan2(diff.y, diff.x);
+    boat.angle = lerpAngle(boat.angle, targetAngle, 0.1);
   });
 });
 
