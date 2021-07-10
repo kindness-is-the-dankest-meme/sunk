@@ -23,5 +23,11 @@
   "bugs": {
     "url": "https://github.com/kindness-is-the-dankest-meme/sunk/issues"
   },
-  "homepage": "https://github.com/kindness-is-the-dankest-meme/sunk#readme"
+  "homepage": "https://github.com/kindness-is-the-dankest-meme/sunk#readme",
+  "dependencies": {
+    "kaboom": "^0.5.1"
+  },
+  "devDependencies": {
+    "parcel": "^2.0.0-beta.2"
+  }
 }
