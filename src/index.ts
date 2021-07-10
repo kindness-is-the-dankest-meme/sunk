@@ -1,5 +1,7 @@
 import kaboom from "kaboom";
 
+import boat3Url from "url:./img/boat-3.png";
+
 const canvas = document.querySelector("canvas");
 if (!canvas) {
   throw new Error("No canvas found!");
@@ -31,18 +33,22 @@ const lerpAngle = (a: number, b: number, t: number) => {
   return lerp(a, a + (dt > π ? dt - ππ : dt), t);
 };
 
+k.loadSprite("boat-3", boat3Url);
+
 k.scene("level-1", () => {
   const [r, g, b] = [205, 133, 63].map((c) => c / 255);
   if (!(r && g && b)) {
     return;
   }
 
+  k.add([k.rect(k.width(), k.height()), k.color(0, 0, 1)]);
+
   const boat = k.add([
-    k.rect(100, 40),
+    k.sprite("boat-3"),
     k.pos(80, 80),
     k.rotate(0),
-    k.color(k.rgb(r, g, b)),
     k.origin("center"),
+    k.scale(0.5),
   ]);
 
   k.mouseDown(() => {
