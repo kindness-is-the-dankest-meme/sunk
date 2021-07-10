@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A game about boats, and treasure, and stuff.",
   "private": "true",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "parcel serve src/index.html",
