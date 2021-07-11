@@ -69,26 +69,28 @@ k.scene("level-3", () => {
     return;
   }
 
-  k.add([k.rect(k.width(), k.height()), k.color(0, 0, 1)]);
+  // k.add([k.rect(k.width(), k.height()), k.color(0, 0, 1)]);
 
   k.addLevel(
     [
       // prettier-ignore
-      "∙╭─────────────╮∙",
-      "╭┘             └╮",
-      "│ ┌┈┈┈┈┈┈┈┈┈┈┈┐ ┊",
-      "│ ┊∙∙∙∙∙∙∙∙∙∙∙│ ┊",
-      "│ ┊∙∙∙∙∙∙∙∙∙∙∙│ ┊",
-      "│ ┊∙∙∙∙∙∙∙∙∙∙∙│ ┊",
-      "│ └───────────┘ ┊",
-      "╰┐             ┌╯",
-      "∙╰┈┈┈┈┈┈┈┈┈┈┈┈┈╯∙",
+      "∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙",
+      "∙∙╭─────────────╮∙∙",
+      "∙╭┘             └╮∙",
+      "∙│ ┌┈┈┈┈┈┈┐      ┊∙",
+      "∙│ ┊∙∙∙∙∙∙│      ┊∙",
+      "∙│ ┊∙∙∙∙∙∙│      ┊∙",
+      "∙│ ┊∙∙∙∙∙∙│      ┊∙",
+      "∙│ └──────┘      ┊∙",
+      "∙╰┐             ┌╯∙",
+      "∙∙╰┈┈┈┈┈┈┈┈┈┈┈┈┈╯∙∙",
+      "∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙",
     ],
     {
       width: 64,
       height: 64,
       pos: k.vec2(0, 0),
-      "∙": [k.sprite("tile-13")],
+      "∙": [k.sprite("tile-13"), k.solid()],
       "╭": [k.sprite("tile-00")],
       "╮": [k.sprite("tile-02")],
       "╯": [k.sprite("tile-12")],
@@ -108,7 +110,8 @@ k.scene("level-3", () => {
 
   const boat = k.add([
     k.sprite("boat-3"),
-    k.pos(80, 80),
+    k.area(k.vec2(-60, -80), k.vec2(60, 80)),
+    k.pos(k.width() / 2, k.height() / 2),
     k.rotate(0),
     k.origin("center"),
     k.scale(0.5),
@@ -116,6 +119,7 @@ k.scene("level-3", () => {
 
   boat.action(() => {
     k.camPos(boat.pos);
+    boat.resolve();
   });
 
   k.mouseDown(() => {
