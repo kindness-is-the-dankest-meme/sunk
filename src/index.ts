@@ -1,5 +1,4 @@
 import kaboom from "kaboom";
-
 import boat3Url from "url:./img/boat-3.png";
 import tile00Url from "url:./img/tile-00.png";
 import tile01Url from "url:./img/tile-01.png";
@@ -15,6 +14,7 @@ import tile10Url from "url:./img/tile-10.png";
 import tile11Url from "url:./img/tile-11.png";
 import tile12Url from "url:./img/tile-12.png";
 import tile13Url from "url:./img/tile-13.png";
+import { level1 } from "./game/level-1";
 
 const canvas = document.querySelector("canvas");
 if (!canvas) {
@@ -71,42 +71,26 @@ k.scene("level-3", () => {
 
   // k.add([k.rect(k.width(), k.height()), k.color(0, 0, 1)]);
 
-  k.addLevel(
-    [
-      // prettier-ignore
-      "∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙",
-      "∙∙╭─────────────╮∙∙",
-      "∙╭┘             └╮∙",
-      "∙│ ┌┈┈┈┈┈┈┐      ┊∙",
-      "∙│ ┊∙∙∙∙∙∙│      ┊∙",
-      "∙│ ┊∙∙∙∙∙∙│      ┊∙",
-      "∙│ ┊∙∙∙∙∙∙│      ┊∙",
-      "∙│ └──────┘      ┊∙",
-      "∙╰┐             ┌╯∙",
-      "∙∙╰┈┈┈┈┈┈┈┈┈┈┈┈┈╯∙∙",
-      "∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙",
-    ],
-    {
-      width: 64,
-      height: 64,
-      pos: k.vec2(0, 0),
-      "∙": [k.sprite("tile-13"), k.solid()],
-      "╭": [k.sprite("tile-00")],
-      "╮": [k.sprite("tile-02")],
-      "╯": [k.sprite("tile-12")],
-      "╰": [k.sprite("tile-10")],
-      "│": [k.sprite("tile-05")],
-      "─": [k.sprite("tile-01")],
-      " ": [k.sprite("tile-06")],
-      "┌": [k.sprite("tile-03")],
-      "┐": [k.sprite("tile-04")],
-      "┘": [k.sprite("tile-09")],
-      "└": [k.sprite("tile-08")],
-      "┊": [k.sprite("tile-07")],
-      "┈": [k.sprite("tile-11")],
-      any: () => [],
-    }
-  );
+  k.addLevel(level1, {
+    width: 64,
+    height: 64,
+    pos: k.vec2(0, 0),
+    "∙": [k.sprite("tile-13"), k.solid()],
+    "╭": [k.sprite("tile-00")],
+    "╮": [k.sprite("tile-02")],
+    "╯": [k.sprite("tile-12")],
+    "╰": [k.sprite("tile-10")],
+    "│": [k.sprite("tile-05")],
+    "─": [k.sprite("tile-01")],
+    " ": [k.sprite("tile-06")],
+    "┌": [k.sprite("tile-03")],
+    "┐": [k.sprite("tile-04")],
+    "┘": [k.sprite("tile-09")],
+    "└": [k.sprite("tile-08")],
+    "┊": [k.sprite("tile-07")],
+    "┈": [k.sprite("tile-11")],
+    any: () => [],
+  });
 
   const boat = k.add([
     k.sprite("boat-3"),
